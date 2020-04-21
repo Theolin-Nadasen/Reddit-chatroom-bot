@@ -1,6 +1,11 @@
 # Reddit-chatroom-bot
 this is a bot for reddit chatrooms
 
+you will need to have the selenium library and geckodriver installed:
+
+https://pypi.org/project/selenium/
+https://github.com/mozilla/geckodriver/releases
+
 # setup
 
 on line 11 replace REDDIT_CHAT_URL with the url of the chatroom.
