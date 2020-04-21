@@ -4,6 +4,7 @@ this is a bot for reddit chatrooms
 you will need to have the selenium library and geckodriver installed:
 
 https://pypi.org/project/selenium/
+
 https://github.com/mozilla/geckodriver/releases
 
 # setup
