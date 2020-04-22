@@ -17,6 +17,6 @@ on line 16 replace PASSWORD with your password.
 
 # adding commands
 
-to add a command you need to make the commands function in the functions section (after line 33)
+to add a command you need to make the commands function in the functions section (after line 42)
 
-then you need to add the command to cmds dictionary on line 74
+then you need to add the command to cmds dictionary on line 94
