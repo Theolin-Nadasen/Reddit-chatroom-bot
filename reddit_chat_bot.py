@@ -8,6 +8,7 @@ firefox_headless = webdriver.FirefoxOptions()
 firefox_headless.headless = True
 browser = webdriver.Firefox(options=firefox_headless)
 
+
 browser.get('REDDIT_CHAT_URL')
 sleep(2)
 
@@ -26,8 +27,16 @@ def lastmsg():
     lastMessage = messages[-1].get_attribute("innerHTML")
     return lastMessage
 
+#gets the last name
+def lastname():
+    name = browser.find_elements_by_class_name("pqdGGYoXaBuzfPrYLoqaM")
+    name = name[-1].get_attribute("innerHTML")
+    return name
+
+
 # global variables
 faqs= {}
+comuser = ""
 
 
 # commands
@@ -39,7 +48,12 @@ def dice():
     return False
 
 def close():
-    return True
+    if comuser == "_--_GOD_--_":
+        return True
+    else:
+    	textbox.send_keys("you don't have permission to do that")
+    	textbox.send_keys(Keys.RETURN)
+    	return False
 
 def addfaq():
     faqMsg = msg.split(" ", 2)
@@ -50,8 +64,9 @@ def addfaq():
 
 def faq():
     faqMsg = msg.split(" ", 2)
-    textbox.send_keys(faqs.get(faqMsg[1]))
-    textbox.send_keys(Keys.RETURN)
+    if faqs.get(faqMsg[1]) != None:
+        textbox.send_keys(faqs.get(faqMsg[1]))
+        textbox.send_keys(Keys.RETURN)
     return False
 
 def reverse():
@@ -67,15 +82,21 @@ def help():
     textbox.send_keys(Keys.RETURN)
     return False
 
+def myname():
+    textbox.send_keys(lastname())
+    textbox.send_keys(Keys.RETURN)
+    return False
+
 
 
 # add your commands to the dictionary
 
-cmds = {"[dice]": dice, "[exit]": close, "[addfaq]": addfaq, "[faq]": faq, "[reverse]": reverse, "[help]": help}
+cmds = {"[dice]": dice, "[exit]": close, "[addfaq]": addfaq, "[faq]": faq, "[reverse]": reverse, "[help]": help, "[name]": myname}
 
 while True:
     sleep(1)
     msg = lastmsg()
+    comuser = lastname()
     x = msg.split(" ", 1)
     x = cmds.get(x[0])
     if x == None:
